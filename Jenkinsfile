@@ -1,6 +1,15 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
+    triggers {
+        pollSCM('H 4/* 0 0 1-5')
+    }
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
     stages {
         stage('Build') {
             steps {
