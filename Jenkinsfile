@@ -4,7 +4,7 @@ pipeline {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
     triggers {
-        pollSCM('H 4/* 0 0 1-5')
+        pollSCM('* * * * *')
     }
 
     options {
